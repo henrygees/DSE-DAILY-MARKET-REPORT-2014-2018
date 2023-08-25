@@ -1,0 +1,34 @@
+#locate the read file
+NMB.txt <- read.table ("C:/Users/HENRY JEFF GEOFFREY/Desktop/DSE DAILY MARKET REPORT/NMB DAILY MARKET REPORT 2014-2018.txt", header = TRUE, "\t")
+
+# extract the technical indicators, closing price and opening prices
+
+OpeningPrice <- data.frame(NMB.txt$ Opening.Price..TZS.)
+ClosingPrice <- data.frame (NMB.txt$ Closing.Price..TZS.)
+
+# define the fitness functions( 0bjective function) that is profitable equation
+
+fitness <- function (ClosingPrice) {ClosingPrice <= OpeningPrice}
+
+# fit the objective function into the GA algorthms 
+
+GA <- ga("binary", fitness = fitness,popSize = 1085, nBits = ncol(ClosingPrice),names = colnames(ClosingPrice), selection = gabin_lrSelection, crossover = gabin_uCrossover, mutation = gabin_raMutation, maxiter = 200)
+
+# obtain the GA solutions data
+
+NMB_GA_Solution_closingPrice <- data.frame(ClosingPrice[GA@solution == 1])
+
+# convert the GA sulution data to interger from the dataframe
+
+NMB_GA_Solution_closingPrice<- as.integer(NMB_GA_Solution_closingPrice$ClosingPrice.GA.solution....1.)
+
+
+# formulate the histogram 
+
+hist(NMB_GA_Solution_closingPrice,breaks = 11,freq =FALSE,col = blues9, main = "Histogram of GA data of NMB", xlab = "Stock Price values")
+
+# put the overlaying curve on the Histogram
+
+curve(dnorm(x, mean = mean(NMB_GA_Solution_closingPrice), sd = sd(NMB_GA_Solution_closingPrice)),col = "red", lwd = 2, add = TRUE)
+
+

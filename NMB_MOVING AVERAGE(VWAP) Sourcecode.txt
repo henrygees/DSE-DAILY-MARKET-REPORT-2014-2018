@@ -1,0 +1,50 @@
+# locate the file with the market data
+
+NMB.txt <- read.table ("C:/Users/HENRY JEFF GEOFFREY/Desktop/DSE DAILY MARKET REPORT/NMB DAILY MARKET REPORT 2014-2018.txt", header = TRUE, "\t")
+
+# extract the technical indicator 
+
+NMB.txt [2] = Closing.Price..TZS.
+NMB.txt [9] = Number.of..share..traded..
+
+# insert the technical indicator into the MA algorithms (TTR package)
+
+
+NMB_VWAP <- VWAP(NMB.txt[2], NMB.txt[9], n =200,)
+NMB_VWAP <- na.omit(NMB_VWAP)
+
+#formulate the Histogram
+
+hist(NMB_VWAP,breaks = 11,freq =FALSE,col = blues9, main = "Histogram of VWAP data for NMB", xlab = "Stock Price values")
+
+# put the overlaying curve on the Histogram 
+
+curve(dnorm(x, mean = mean(NMB_VWAP), sd = sd(NMB_VWAP)),col = "red", lwd = 2, add = TRUE)
+
+
+#Percentage confidence 
+
+# define sample size for calculating the confidence interval
+
+NMB_VWAP_sampleSize <- 200
+
+#find mean of the sample 
+
+Company_VWAP_mean <- mean(head(Company.txt$Closing.Price..TZS., 200))
+
+# find the standard variation of the sample
+
+Company_VWAP_sd <- sd(head(Company.txt$Closing.Price..TZS., 200))
+
+# calculating the standard error
+
+standardError_VWAP <- qnorm(0.975)*Company_VWAP_sd/sqrt(NMB_VWAP_sampleSize)
+
+# obtain the confidence interval marginal to the left margin 
+
+confident_interval (95%)_VWAP_left<- (Company_VWAP_mean) – (standardError_VWAP)
+
+# obtain the confidence interval marginal to the right margin 
+
+confident_interval (95%)_VWAP_right <- (Company_VWAP_mean) + (standardError_VWAP)
+
