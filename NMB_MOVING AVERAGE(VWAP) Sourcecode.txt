@@ -1,6 +1,6 @@
 # locate the file with the market data
 
-NMB.txt <- read.table ("C:/Users/HENRY JEFF GEOFFREY/Desktop/DSE DAILY MARKET REPORT/NMB DAILY MARKET REPORT 2014-2018.txt", header = TRUE, "\t")
+NMB.txt <- read.table ("https://github.com/henrygees/DSE-DAILY-MARKET-REPORT-2014-2018/blob/main/NMB%20DAILY%20MARKET%20REPORT%202014-2018.txt", header = TRUE, "\t")
 
 # extract the technical indicator 
 
@@ -42,7 +42,7 @@ standardError_VWAP <- qnorm(0.975)*Company_VWAP_sd/sqrt(NMB_VWAP_sampleSize)
 
 # obtain the confidence interval marginal to the left margin 
 
-confident_interval (95%)_VWAP_left<- (Company_VWAP_mean) – (standardError_VWAP)
+confident_interval (95%)_VWAP_left<- (Company_VWAP_mean) â€“ (standardError_VWAP)
 
 # obtain the confidence interval marginal to the right margin 
 
