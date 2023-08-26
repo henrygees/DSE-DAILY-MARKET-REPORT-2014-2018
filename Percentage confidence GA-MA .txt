@@ -1,0 +1,54 @@
+#Percentage confidence in Moving Average (MA-VWAP) 
+
+# define sample size for calculating the confidence interval
+
+NMB_VWAP_sampleSize <- 200
+
+#find mean of the sample 
+
+Company_VWAP_mean <- mean(head(Company.txt$Closing.Price..TZS., 200))
+
+# find the standard variation of the sample
+
+Company_VWAP_sd <- sd(head(Company.txt$Closing.Price..TZS., 200))
+
+# calculating the standard error
+
+standardError_VWAP <- qnorm(0.975)*Company_VWAP_sd/sqrt(NMB_VWAP_sampleSize)
+
+# obtain the confidence interval marginal to the left margin 
+
+confident_interval (95%)_VWAP_left<- (Company_VWAP_mean) – (standardError_VWAP)
+
+# obtain the confidence interval marginal to the right margin 
+
+confident_interval (95%)_VWAP_right <- (Company_VWAP_mean) + (standardError_VWAP)
+
+-------------------------------------------------------------------
+#Percentage confidence Genetic Algorithms(GA)
+
+# define sample size for calculating the confidence interval
+
+NMB_GA_sampleSize <- 200
+
+#find mean of the sample 
+
+Company_GA_mean <- mean(head(Company.txt$Closing.Price..TZS., 200))
+
+# find the standard variation of the sample
+
+Company_GA_sd <- sd(head(Company.txt$Closing.Price..TZS., 200))
+
+# calculating the standard error
+
+standardError_GA <- qnorm(0.975)*Company_VWAP_sd/sqrt(NMB_GA_sampleSize)
+
+# obtain the confidence interval marginal to the left margin 
+
+confident_interval (95%)_GA_left<- (Company_VWAP_mean) – (standardError_GA)
+
+# obtain the confidence interval marginal to the right margin 
+
+confident_interval (95%)_GA_right <- (Company_GA_mean) + (standardError_GA)
+
+
