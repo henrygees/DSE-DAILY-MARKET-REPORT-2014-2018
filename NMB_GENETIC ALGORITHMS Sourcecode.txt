@@ -1,5 +1,5 @@
 #locate the read file
-NMB.txt <- read.table ("C:/Users/HENRY JEFF GEOFFREY/Desktop/DSE DAILY MARKET REPORT/NMB DAILY MARKET REPORT 2014-2018.txt", header = TRUE, "\t")
+NMB.txt <- read.table ("https://github.com/henrygees/DSE-DAILY-MARKET-REPORT-2014-2018/blob/main/NMB%20DAILY%20MARKET%20REPORT%202014-2018.txt", header = TRUE, "\t")
 
 # extract the technical indicators, closing price and opening prices
 
